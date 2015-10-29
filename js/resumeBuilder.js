@@ -12,39 +12,42 @@ var bio = {
     'skills': ['HTML', 'CSS', 'JavaScript'],
     'biopic': 'images/fry.jpg',
     'display': function () {
-        var formattedHeaderRole = HTMLheaderRole.replace('%data%', bio.role);
-        $('#header').prepend(formattedHeaderRole);
+        var $header = $('#header'), $topContacts = $('#topContacts'), $footerContacts = $('#footerContacts');
 
-        var formattedHeaderName = HTMLheaderName.replace('%data%', bio.name);
-        $('#header').prepend(formattedHeaderName);
+        var formattedHeaderRole = HTMLheaderRole.replace('%data%', this.role);
+        $header.prepend(formattedHeaderRole);
 
-        var formattedMobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
-        $('#topContacts').append(formattedMobile);
-        $('#footerContacts').append(formattedMobile);
+        var formattedHeaderName = HTMLheaderName.replace('%data%', this.name);
+        $header.prepend(formattedHeaderName);
 
-        var formattedEmail = HTMLemail.replace('%data%', bio.contacts.email);
-        $('#topContacts').append(formattedEmail);
-        $('#footerContacts').append(formattedEmail);
+        var formattedMobile = HTMLmobile.replace('%data%', this.contacts.mobile);
+        $topContacts.append(formattedMobile);
+        $footerContacts.append(formattedMobile);
 
-        var formattedGithub = HTMLgithub.replace('%data%', bio.contacts.github);
-        $('#topContacts').append(formattedGithub);
-        $('#footerContacts').append(formattedGithub);
+        var formattedEmail = HTMLemail.replace('%data%', this.contacts.email);
+        $topContacts.append(formattedEmail);
+        $footerContacts.append(formattedEmail);
 
-        var formattedLocation = HTMLlocation.replace('%data%', bio.contacts.location);
-        $('#topContacts').append(formattedLocation);
-        $('#footerContacts').append(formattedLocation);
+        var formattedGithub = HTMLgithub.replace('%data%', this.contacts.github);
+        $topContacts.append(formattedGithub);
+        $footerContacts.append(formattedGithub);
 
-        var formattedBioPic = HTMLbioPic.replace('%data%', bio.biopic);
-        $('#header').append(formattedBioPic);
+        var formattedLocation = HTMLlocation.replace('%data%', this.contacts.location);
+        $topContacts.append(formattedLocation);
+        $footerContacts.append(formattedLocation);
 
-        var formattedWelcomeMsg = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
-        $('#header').append(formattedWelcomeMsg);
+        var formattedBioPic = HTMLbioPic.replace('%data%', this.biopic);
+        $header.append(formattedBioPic);
 
-        $('#header').append(HTMLskillsStart);
+        var formattedWelcomeMsg = HTMLwelcomeMsg.replace('%data%', this.welcomeMessage);
+        $header.append(formattedWelcomeMsg);
 
-        bio.skills.forEach(function(skill) {
+        $header.append(HTMLskillsStart);
+
+        var $skills = $('#skills');
+        this.skills.forEach(function(skill) {
             var formattedSkills = HTMLskills.replace('%data%', skill);
-            $('#skills').append(formattedSkills);
+            $skills.append(formattedSkills);
         });
     }
 };
