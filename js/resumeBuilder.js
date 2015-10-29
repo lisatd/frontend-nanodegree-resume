@@ -79,9 +79,31 @@ var work = {
         'location': 'Woburn, MA',
         'dates': 'Aug 2013 - Present',
         'description': 'change'
+    }, {
+        'employer': 'Aptima, Inc.',
+        'title': 'Software Engineer',
+        'location': 'Woburn, MA',
+        'dates': 'Aug 2013 - Present',
+        'description': 'change'
     }],
     'display': function() {
+        this.jobs.forEach(function(job) {
+            var $workEntry = $(HTMLworkStart);
+            $('#workExperience').append($workEntry);
 
+            var formattedWorkEmployer = HTMLworkEmployer.replace('%data%', job.employer);
+            var formattedWorkTitle = HTMLworkTitle.replace('%data%', job.title);
+            $workEntry.append(formattedWorkEmployer + formattedWorkTitle);
+
+            var formattedWorkDates = HTMLworkDates.replace('%data%', job.dates);
+            $workEntry.append(formattedWorkDates);
+
+            var formattedWorkLocation = HTMLworkLocation.replace('%data%', job.location);
+            $workEntry.append(formattedWorkLocation);
+
+            var formattedWorkDescription = HTMLworkDescription.replace('%data%', job.description);
+            $workEntry.append(formattedWorkDescription);
+        })
     }
 };
 
