@@ -56,7 +56,7 @@ var education = {
     'schools': [{
         'name': 'Stony Brook University',
         'location': 'Stony Brook, NY, USA',
-        'degree': 'B.S. in Computer Science',
+        'degree': 'B.S.',
         'majors': ['Computer Science'],
         'dates': 2013,
         'url': 'change'
@@ -68,7 +68,44 @@ var education = {
         'url': 'change'
     }],
     'display': function() {
+        var $education = $('#education');
 
+        this.schools.forEach(function(school) {
+            var $educationEntry = $(HTMLschoolStart);
+            $education.append($educationEntry);
+
+            var formattedSchoolName = HTMLschoolName.replace('%data%', school.name);
+            var formattedSchoolDegree = HTMLschoolDegree.replace('%data%', school.degree);
+            $educationEntry.append(formattedSchoolName + formattedSchoolDegree);
+
+            var formattedSchoolDates = HTMLschoolDates.replace('%data%', school.dates);
+            $educationEntry.append(formattedSchoolDates);
+
+            var formattedSchoolLocation = HTMLschoolLocation.replace('%data%', school.location);
+            $educationEntry.append(formattedSchoolLocation);
+
+            school.majors.forEach(function(major) {
+                var formattedSchoolMajor = HTMLschoolMajor.replace('%data%', major);
+                $educationEntry.append(formattedSchoolMajor);
+            });
+        });
+
+        $education.append(HTMLonlineClasses);
+
+        this.onlineCourses.forEach(function(course) {
+            var $educationEntry = $(HTMLschoolStart);
+            $education.append($educationEntry);
+
+            var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', course.title);
+            var formattedOnlineSchool = HTMLonlineSchool.replace('%data%', course.school);
+            $educationEntry.append(formattedOnlineTitle + formattedOnlineSchool);
+
+            var formattedOnlineDates = HTMLonlineDates.replace('%data%', course.date);
+            $educationEntry.append(formattedOnlineDates);
+
+            var formattedOnlineURL = HTMLonlineURL.replace('%data%', course.url);
+            $educationEntry.append(formattedOnlineURL);
+        });
     }
 };
 
@@ -139,3 +176,4 @@ var projects = {
 bio.display();
 work.display();
 projects.display();
+education.display();
