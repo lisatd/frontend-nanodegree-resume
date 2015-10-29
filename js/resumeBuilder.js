@@ -112,11 +112,30 @@ var projects = {
         'title': 'change',
         'dates': 'change',
         'description': 'change',
-        'images': ['change']
+        'images': ['images/197x148.gif']
     }],
     'display': function() {
+        this.projects.forEach(function(project) {
+            var $projectEntry = $(HTMLprojectStart);
+            $('#projects').append($projectEntry);
 
+            var formattedProjectTitle = HTMLprojectTitle.replace('%data%', project.title);
+            $projectEntry.append(formattedProjectTitle);
+
+            var formattedProjectDates = HTMLprojectDates.replace('%data%', project.dates);
+            $projectEntry.append(formattedProjectDates);
+
+            var formattedProjectDescription = HTMLprojectDescription.replace('%data%', project.description);
+            $projectEntry.append(formattedProjectDescription);
+
+            project.images.forEach(function(image) {
+                var formattedProjectImage = HTMLprojectImage.replace('%data%', image);
+                $projectEntry.append(formattedProjectImage);
+            });
+        })
     }
 };
 
 bio.display();
+work.display();
+projects.display();
