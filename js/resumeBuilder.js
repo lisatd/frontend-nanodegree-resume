@@ -55,7 +55,7 @@ var bio = {
 var education = {
     'schools': [{
         'name': 'Stony Brook University',
-        'location': 'Stony Brook, NY, USA',
+        'location': 'Stony Brook, NY',
         'degree': 'B.S.',
         'majors': ['Computer Science'],
         'dates': 2013,
@@ -173,7 +173,12 @@ var projects = {
     }
 };
 
+function addGoogleMaps() {
+    $('#mapDiv').append(googleMap);
+}
+
 bio.display();
 work.display();
 projects.display();
 education.display();
+addGoogleMaps();
