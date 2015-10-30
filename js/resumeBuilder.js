@@ -8,9 +8,9 @@ var bio = {
         'twitter': null,
         'location': 'Boston, MA'
     },
-    'welcomeMessage': 'change',
-    'skills': ['HTML', 'CSS', 'JavaScript'],
-    'biopic': 'images/fry.jpg',
+    'welcomeMessage': 'Full time software and web developer with a focus on front end web applications.',
+    'skills': ['HTML', 'CSS', 'JavaScript', 'C#', 'Java'],
+    'biopic': 'images/biopic.png',
     'display': function () {
         var $header = $('#header'), $topContacts = $('#topContacts'), $footerContacts = $('#footerContacts');
 
@@ -59,13 +59,13 @@ var education = {
         'degree': 'B.S.',
         'majors': ['Computer Science'],
         'dates': 2013,
-        'url': 'change'
+        'url': 'http://www.stonybrook.edu/'
     }],
     'onlineCourses': [{
         'title': 'Nanodegree',
         'school': 'Udacity',
         'date': 2016,
-        'url': 'change'
+        'url': 'https://www.udacity.com/'
     }],
     'display': function() {
         var $education = $('#education');
@@ -75,6 +75,7 @@ var education = {
             $education.append($educationEntry);
 
             var formattedSchoolName = HTMLschoolName.replace('%data%', school.name);
+            formattedSchoolName = formattedSchoolName.replace('#', school.url);
             var formattedSchoolDegree = HTMLschoolDegree.replace('%data%', school.degree);
             $educationEntry.append(formattedSchoolName + formattedSchoolDegree);
 
@@ -97,6 +98,7 @@ var education = {
             $education.append($educationEntry);
 
             var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', course.title);
+            formattedOnlineTitle = formattedOnlineTitle.replace('#', course.url);
             var formattedOnlineSchool = HTMLonlineSchool.replace('%data%', course.school);
             $educationEntry.append(formattedOnlineTitle + formattedOnlineSchool);
 
@@ -104,6 +106,7 @@ var education = {
             $educationEntry.append(formattedOnlineDates);
 
             var formattedOnlineURL = HTMLonlineURL.replace('%data%', course.url);
+            formattedOnlineURL = formattedOnlineURL.replace('#', course.url);
             $educationEntry.append(formattedOnlineURL);
         });
     }
@@ -112,16 +115,20 @@ var education = {
 var work = {
     'jobs': [{
         'employer': 'Aptima, Inc.',
-        'title': 'Software Engineer',
+        'title': 'Software Engineer II',
         'location': 'Woburn, MA',
         'dates': 'Aug 2013 - Present',
-        'description': 'change'
+        'description': 'Built multiple front end web applications on various projects. Main technologies used are AngularJS, ' +
+        'D3.js, Twitter Bootstrap, BreezeJS, REST api, and Microsoft SQL. Web applications vary from performance dashboards, ' +
+        'training interfaces, and a mobile-friendly hospital patient portal. Involved in development of Performance Measurement ' +
+        'product, including building plugins and testing tools built on C#.'
     }, {
-        'employer': 'Aptima, Inc.',
-        'title': 'Software Engineer',
-        'location': 'Woburn, MA',
-        'dates': 'Aug 2013 - Present',
-        'description': 'change'
+        'employer': 'XCL Business Products',
+        'title': 'Programmer/IT - Intern',
+        'location': 'Hauppauge, NY',
+        'dates': 'Feb 2013 - May 2013',
+        'description': 'Researched and reported third party software for Xerox products. Researched and began development of ' +
+        'Xerox application based on SDK.'
     }],
     'display': function() {
         this.jobs.forEach(function(job) {
@@ -146,10 +153,15 @@ var work = {
 
 var projects = {
     'projects': [{
-        'title': 'change',
-        'dates': 'change',
-        'description': 'change',
-        'images': ['images/197x148.gif']
+        'title': 'Udacity P1: Porfolio Mockup to HTML',
+        'dates': 'Sept 2015',
+        'description': 'Project 1 of Udacity Front End Nanodegree Program. Turned a pdf mockup into HTML/CSS page.',
+        'images': ['images/project1.png']
+    }, {
+        'title': 'Udacity P2: Online Resume',
+        'dates': 'Oct 2015',
+        'description': 'Project 2 of Udacity Front End Nanodegree Program. An online resume built with jQuery and Google api.',
+        'images': ['images/project2.png', 'images/project2-2.png']
     }],
     'display': function() {
         this.projects.forEach(function(project) {
